@@ -1,5 +1,4 @@
 require('isomorphic-fetch');
-const path = require('path');
 const dotenv = require('dotenv');
 const Koa = require('koa');
 const next = require('next');
@@ -7,7 +6,7 @@ const { default: createShopifyAuth } = require('@shopify/koa-shopify-auth');
 const { verifyRequest } = require('@shopify/koa-shopify-auth');
 const session = require('koa-session');
 
-dotenv.config('process.env')
+var result = dotenv.config();
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -28,6 +27,7 @@ app.prepare().then(() => {
       scopes: ['read_products'],
       afterAuth(ctx) {
         const { shop, accessToken } = ctx.session;
+
         ctx.redirect('/');
       },
     }),
@@ -42,7 +42,7 @@ app.prepare().then(() => {
   });
 
   server.listen(port, () => {
-    console.log(path.join('process', '.env'));
+    console.log(result);
     console.log(`> Ready on http://localhost:${port}`);
   });
 });
