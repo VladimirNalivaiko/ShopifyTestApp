@@ -5,16 +5,16 @@ import {
   FormLayout,
   Layout,
   Page,
+  SettingToggle,
   Stack,
   TextField,
-  SettingToggle,
-  TextStyle
+  TextStyle,
 } from '@shopify/polaris';
 
 class AnnotatedLayout extends React.Component {
   state = {
     discount: '10%',
-    enabled: false
+    enable: false
   };
 
   render() {
@@ -27,7 +27,7 @@ class AnnotatedLayout extends React.Component {
         <Layout>
           <Layout.AnnotatedSection
             title="Default discount"
-            description="Add a product to Sample App, it will automatically be discounted." 
+            description="Add a product to Sample App, it will automatically be discounted."
           >
             <Card sectioned>
               <Form onSubmit={this.handleSubmit}>
@@ -75,6 +75,7 @@ class AnnotatedLayout extends React.Component {
   };
 
   handleChange = (field) => {
+    console.log("changed");
     return (value) => this.setState({ [field]: value });
   };
 

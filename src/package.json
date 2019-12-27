@@ -13,18 +13,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@shopify/app-bridge-react": "^1.6.8",
-    "@shopify/koa-shopify-auth": "^3.1.33",
-    "@shopify/polaris": "^4.1.0",
+    "@shopify/app-bridge-react": "^1.12.0",
+    "@shopify/koa-shopify-auth": "^3.1.51",
+    "@shopify/polaris": "^4.10.2",
     "@zeit/next-css": "^1.0.1",
-    "dotenv": "^8.1.0",
+    "dotenv": "^8.2.0",
     "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.2.1",
-    "koa": "^2.8.1",
+    "koa": "^2.11.0",
     "koa-session": "^5.12.3",
-    "next": "^9.0.5",
-    "ngrok": "^3.2.5",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "next": "^9.1.6",
+    "ngrok": "^3.2.7",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   }
 }

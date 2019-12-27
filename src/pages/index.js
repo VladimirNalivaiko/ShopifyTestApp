@@ -10,6 +10,7 @@ class Index extends React.Component  {
          <TitleBar
           primaryAction={{
             content: 'Select products',
+            onAction: () => this.setState({ open: true }),
           }}
         />
         <ResourcePicker
@@ -20,11 +21,14 @@ class Index extends React.Component  {
           onCancel={() => this.setState({ open: false })}
         />
         <Layout>
-        <EmptyState
+          <EmptyState
             heading="Discount your products temporarily"
             action={{
               content: 'Select products',
-              onAction: () => this.setState({ open: true }),
+              onAction: () => {
+                this.setState({ open: true });
+                console.log(this.state);
+              },
             }}
             image={img}
           >
@@ -32,10 +36,12 @@ class Index extends React.Component  {
           </EmptyState>
         </Layout>
       </Page>
+      
     );
   }
 
   handleSelection = (resources) => {
+    console.log('resource picker clicked');
     this.setState({ open: false })
     console.log(resources)
   };
