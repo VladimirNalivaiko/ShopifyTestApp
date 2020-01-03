@@ -1,10 +1,12 @@
-import { EmptyState, Layout, Page } from '@shopify/polaris';
-import { ResourcePicker, TitleBar } from '@shopify/app-bridge-react';
+import { AppProvider, EmptyState, Layout, Page } from '@shopify/polaris';
+import { Provider, ResourcePicker, TitleBar } from '@shopify/app-bridge-react';
+import Cookies from 'js-cookie';
 const img = 'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg';
 
 class Index extends React.Component  {
   state = {open: false};
   render() {
+    const config = { apiKey: API_KEY, shopOrigin: Cookies.get("shopOrigin"), forceRedirect: true };
     return (
       <Page>
          <TitleBar
@@ -17,7 +19,7 @@ class Index extends React.Component  {
           resourceType="Product"
           showVariants={false}
           open={this.state.open}
-          onSelection={(resources) => this.handleSelection(resources)}
+          onSelection={this.handleSelection}
           onCancel={() => this.setState({ open: false })}
         />
         <Layout>
@@ -36,9 +38,10 @@ class Index extends React.Component  {
           </EmptyState>
         </Layout>
       </Page>
-      
     );
   }
+
+  
 
   handleSelection = (resources) => {
     console.log('resource picker clicked');

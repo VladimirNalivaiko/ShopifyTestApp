@@ -18,11 +18,11 @@ class MyApp extends App {
           <title>Sample App</title>
           <meta charSet="utf-8" />
         </Head>
-        <Provider config={config}>
-          <AppProvider i18n={translations}>
+
+          <AppProvider shopOrigin={config.shopOrigin} apiKey={config.apikey} forceRedirect i18n={translations}>
             <Component {...pageProps} />
           </AppProvider>
-        </Provider>
+
       </React.Fragment>
     );
   }
