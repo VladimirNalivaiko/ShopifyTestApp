@@ -6,7 +6,11 @@ const img = 'https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg';
 import ResourceListWithProducts from '../components/ResourceList';
 
 class Index extends React.Component  {
-  state = {open: false};
+  constructor(props) {
+    super(props);
+    this.state = {open: false};
+  }
+
   render() {
     const config = { apiKey: API_KEY, shopOrigin: Cookies.get("shopOrigin"), forceRedirect: true };
     return (
@@ -19,9 +23,9 @@ class Index extends React.Component  {
         />
         <ResourcePicker
           resourceType="Product"
-          showVariants={false}
-          open={this.state.open}
-          onSelection={this.handleSelection}
+          showVariants={true}
+          open={true}
+          onSelection={(res) => console.log(11)}
           onCancel={() => this.setState({ open: false })}
         />
         <Layout>
@@ -39,7 +43,7 @@ class Index extends React.Component  {
             <p>Select products to change their price temporarily.</p>
           </EmptyState>
         </Layout>
-        <ResourceListWithProducts />
+        {/* <ResourceListWithProducts /> */}
       </Page>
     );
   }
@@ -48,9 +52,9 @@ class Index extends React.Component  {
 
   handleSelection = (resources) => {
     console.log('resource picker clicked');
-    this.setState({ open: false });
-    console.log(resources);
-    store.set('ids', idsFromResources);
+    //this.setState({ open: true });
+     console.log(resources);
+    // store.set('ids', idsFromResources);
   };
 }
 
