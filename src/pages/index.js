@@ -13,6 +13,7 @@ class Index extends React.Component  {
 
   render() {
     const config = { apiKey: API_KEY, shopOrigin: Cookies.get("shopOrigin"), forceRedirect: true };
+    const emptyState = false;
     return (
       <Page>
          <TitleBar
@@ -28,22 +29,23 @@ class Index extends React.Component  {
           onSelection={(res) => console.log(11)}
           onCancel={() => this.setState({ open: false })}
         />
-        <Layout>
-          <EmptyState
-            heading="Discount your products temporarily"
-            action={{
-              content: 'Select products',
-              onAction: () => {
-                this.setState({ open: true });
-                console.log(this.state);
-              },
-            }}
-            image={img}
-          >
-            <p>Select products to change their price temporarily.</p>
-          </EmptyState>
-        </Layout>
-        {/* <ResourceListWithProducts /> */}
+        {emptyState ? (
+          <Layout>
+            <EmptyState
+              heading="Select products to start"
+              action={{
+                content: 'Select products',
+                onAction: () => this.setState({ open: true }),
+              }}
+              image={img}
+            >
+              <p>Select products and change their price temporarily</p>
+            </EmptyState>
+          </Layout>
+        ) : (
+            <ResourceListWithProducts />
+        )}
+        <ResourceListWithProducts />
       </Page>
     );
   }
