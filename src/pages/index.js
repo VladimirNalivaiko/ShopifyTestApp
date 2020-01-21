@@ -13,7 +13,7 @@ class Index extends React.Component  {
 
   render() {
     const config = { apiKey: API_KEY, shopOrigin: Cookies.get("shopOrigin"), forceRedirect: true };
-    const emptyState = true;
+    const emptyState = !store.get('ids');
     return (
       <Page>
          <TitleBar
@@ -25,8 +25,8 @@ class Index extends React.Component  {
         <ResourcePicker
           resourceType="Product"
           showVariants={true}
-          open={true}
-          onSelection={(res) => console.log(11)}
+          open={this.state.open}
+          onSelection={(resources) => this.handleSelection(resources)}
           onCancel={() => this.setState({ open: false })}
         />
         {emptyState ? (
@@ -53,6 +53,7 @@ class Index extends React.Component  {
 
   handleSelection = (resources) => {
     console.log('resource picker clicked');
+    const idsFromResources = resources.selection.map((product) => product.id);
     this.setState({ open: true });
     console.log(resources);
     store.set('ids', idsFromResources);
