@@ -55,9 +55,6 @@ class ResourceListWithProducts extends React.Component {
         );
       };
 
-      const idsToFetch = ["gid://shopify/Product/4416666075189",
-      "gid://shopify/Product/4416666140725",
-      "gid://shopify/Product/4416666173493"];
       const twoWeeksFromNow = new Date(Date.now() + 12096e5).toDateString();
       return (
         <Query query={GET_PRODUCTS_BY_ID} variables={{ ids: store.get('ids') }}>
